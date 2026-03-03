@@ -1,0 +1,134 @@
+<DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SKY PROTOCOL - GATEKEEPER</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            border: 1px solid #1a1a1a;
+            padding: 50px;
+            background: rgba(10, 10, 10, 0.9);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+        }
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #333;
+            color: #00ff41;
+            font-size: 1.2rem;
+            text-align: center;
+            outline: none;
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+            transition: 0.5s;
+        }
+        input:focus { border-bottom: 2px solid #00ff41; }
+        button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 0;
+            width: 100%;
+            margin-top: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00ff41; color: #000; }
+        
+        #stage-2, #stage-3 { display: none; }
+        
+        .coord-box {
+            color: #ff3e3e;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 62, 62, 0.5);
+        }
+        .hint { color: #666; font-size: 0.85rem; line-height: 1.5; }
+        .final-msg {
+            color: #00ff41;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="stage-1">
+        <div style="letter-spacing: 5px; color: #888;">[ STAGE_01 ]</div>
+        <input type="text" id="tokenInput" placeholder="ENTER FLASH TOKEN" autocomplete="off">
+        <button onclick="checkToken()">VERIFY IDENTITY</button>
+    </div>
+
+    <div class="container" id="stage-2">
+        <div style="letter-spacing: 5px; color: #ff3e3e;">[ STAGE_02 ]</div>
+        <p style="font-size: 0.9rem;">TARGET LOCATED AT:</p>
+        <div class="coord-box">35.1415, -90.0521</div>
+        <div class="hint">
+            "Turun ke Street View. Temukan poster bebek di dinding bata merah. Apa tulisan yang terpampang besar di sana?"
+        </div>
+        <input type="text" id="duckInput" placeholder="POSTER TEXT..." autocomplete="off">
+        <button onclick="checkDuck()">DECODE LOCATION</button>
+    </div>
+
+    <div class="container" id="stage-3">
+        <div style="letter-spacing: 5px; color: #00ff41;">[ ACCESS GRANTED ]</div>
+        <div class="final-msg">
+            Protokol Selesai.<br>
+            Selamat datang di lingkaran energi utama.<br>
+            Ketuk tombol di bawah untuk bergabung.
+        </div>
+        
+        <button onclick="window.location.href='https://chat.whatsapp.com/JdQZhC37bmO5WxhnUk5CUG?mode=gi_t'" style="background: #25D366; color: #fff;">
+            JOIN SECRET GROUP
+        </button>
+        
+        <p class="hint" style="margin-top: 20px;">"Langit Ganteng Menunggumu."</p>
+    </div>
+
+    <script>
+        const flashToken = "70201aBopC";
+        const duckAnswer = "pure fection"; 
+
+        function checkToken() {
+            const val = document.getElementById('tokenInput').value;
+            if(val === flashToken) {
+                document.getElementById('stage-1').style.display = 'none';
+                document.getElementById('stage-2').style.display = 'block';
+            } else {
+                alert("ACCESS DENIED.");
+            }
+        }
+
+        function checkDuck() {
+            const val = document.getElementById('duckInput').value.toLowerCase();
+            if(val === duckAnswer) {
+                document.getElementById('stage-2').style.display = 'none';
+                document.getElementById('stage-3').style.display = 'block';
+            } else {
+                alert("WRONG IDENTIFICATION.");
+            }
+        }
+    </script>
+</body>
+</html>
